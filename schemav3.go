@@ -16,7 +16,17 @@ func PrimitiveSchemaV3(refType string) *spec.RefOrSpec[spec.Schema] {
 
 // IsComplexSchemaV3 whether a schema is complex and should be a ref schema
 func IsComplexSchemaV3(schema *SchemaV3) bool {
-	// a enum type should be complex
+
+	// // A missing schema means we already fell back to “unknown”.
+	// if schema == nil || schema.Schema == nil {
+	// 	return false
+	// }
+
+	// if schema.Enum == nil {
+	// 	return false
+	// }
+
+	// an enum type should be complex
 	if len(schema.Enum) > 0 {
 		return true
 	}
